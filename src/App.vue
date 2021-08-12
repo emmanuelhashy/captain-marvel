@@ -38,7 +38,7 @@ export default {
     async getCharacter() {
       const baseURL = 'https://gateway.marvel.com:443/v1/public/'
       let res = await this.$http.get(
-        `${baseURL}characters?apikey=d2a508ec092852bfb6b4d607085c6e08`
+        `${baseURL}characters?ts=4&apikey=d2a508ec092852bfb6b4d607085c6e08&hash=5e0d1e6933fef1de49bc37dc61e8ae04`
       );
       this.comics = res.data
       console.log("commics", this.comics)
