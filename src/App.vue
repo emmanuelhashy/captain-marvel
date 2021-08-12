@@ -41,7 +41,7 @@ export default {
         `${baseURL}characters?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
       this.comics = res.data
-      console.log("commics", comics)
+      console.log("commics", this.comics)
     },
   },
   mounted() {
