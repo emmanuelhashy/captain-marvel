@@ -3,6 +3,7 @@
     <Nav/>
     <Hero/>
     <News/>
+    <RecentComics/>
     <featured/>
     <div class="bottom">
       <Gaming/>
@@ -18,6 +19,7 @@ import Featured from './components/Featured.vue'
 import News from './components/News.vue'
 import Gaming from './components/Gaming.vue'
 import Footer from './components/Footer.vue'
+import RecentComics from './components/RecentComics.vue'
 
 export default {
   name: 'App',
@@ -27,18 +29,20 @@ export default {
     Featured,
     News,
     Gaming,
+    RecentComics,
     Footer
   },
   data() {
     return {
       comics: [],
+      caracterId: ""
     };
   },
   methods: {
     async getCharacter() {
       const baseURL = 'https://gateway.marvel.com:443/v1/public/'
       let res = await this.$http.get(
-        `${baseURL}characters?ts=4&apikey=d2a508ec092852bfb6b4d607085c6e08&hash=5e0d1e6933fef1de49bc37dc61e8ae04`
+        `${baseURL}characters?ts=4&apikey=d2a508ec092852bfb6b4d607085c6e08&hash=5a7b205bfcc2b7bce00ea25902ad5d2e`
       );
       this.comics = res.data
       console.log("commics", this.comics)
