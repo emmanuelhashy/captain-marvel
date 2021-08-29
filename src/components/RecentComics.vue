@@ -72,8 +72,9 @@ export default {
       let res = await this.$http.get(
         `${baseURL}characters/1010338/comics?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
-      this.comics = res.data.results.slice(0,6)
+      this.comics = res.data.results
       console.log("commics", this.comics)
+      console.log("sliced commics", this.comics.slice(0,6))
     },
   },
   mounted() {
