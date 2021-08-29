@@ -3,13 +3,15 @@
     <div class="all-comics__header">
       <h1 class="title">All Comics</h1>
       <div class="sort-con container">
-			<h3>Sort by Year</h3>
-			<select name="year" id="year" v-model="year">
-				<option value="" hidden>Select Year</option>
-				<option value="All">All</option>
-				<option v-for="(i, index) in 51" :key="index" :value="i+1969">{{i+1969}}</option>
-			</select>
-		</div>
+        <h3>Sort by Year</h3>
+        <select name="year" id="year" v-model="year">
+          <option value="" hidden>Select Year</option>
+          <option value="All">All</option>
+          <option v-for="(i, index) in 51" :key="index" :value="i + 1969">
+            {{ i + 1969 }}
+          </option>
+        </select>
+      </div>
     </div>
     <div class="all-comics__body">
       <Comic v-for="comic in comics" :key="comic.id" :comic="comic" />
@@ -19,7 +21,7 @@
 </template>
 <script>
 import Comic from "../components/Comic";
-import {baseURL} from "../config.js";
+import { baseURL } from "../config.js";
 export default {
   components: {
     Comic,
@@ -30,7 +32,8 @@ export default {
       comics: [],
       offset: 0,
       loading: false,
-      apikey: "d2a508ec092852bfb6b4d607085c6e08"
+      apikey: "d2a508ec092852bfb6b4d607085c6e08",
+      year: "All"
     };
   },
   computed: {
@@ -51,50 +54,54 @@ export default {
           document.documentElement.scrollTop + window.innerHeight ===
           document.documentElement.offsetHeight;
         if (bottomOfWindow) {
-            this.loading = true;
-          this.$http
-            .get(this.url)
-            .then((response) => {
-                if (response.data.data.results.length > 1) {
-                    response.data.data.results.forEach((item) => this.comics.push(item))
-                    this.loading = false
-                }
-            });
+          console.log("bottomOfWindow");
+          this.loading = true;
+          this.$http.get(this.url).then((response) => {
+            if (response.data.data.results.length > 1) {
+              response.data.data.results.forEach((item) =>
+                this.comics.push(item)
+              );
+              this.loading = false;
+            }
+          });
         }
       };
     },
   },
-  watch:{
-	year(){
-		if(this.year){
-		if(	this.year === "All"){
-			this.offset = 0;
-		this.getInitialComics()
-		}else{
-				this.$http.get(`${baseURL}characters/1010338/comics?startYear=${this.year}&apikey=${this.apikey}`)
-			.then(res=>{
-				this.comics = res.data.data.results;
+  watch: {
+    year() {
+      if (this.year) {
+        if (this.year === "All") {
+          this.offset = 0;
+          this.getInitialComics();
+        } else {
+          this.$http
+            .get(
+              `${baseURL}characters/1010338/comics?startYear=${this.year}&apikey=${this.apikey}`
+            )
+            .then((res) => {
+              this.comics = res.data.data.results;
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      }
+    },
+    // showModal(){
+    // 	console.log("watch show");
 
-			})  .catch((err) => {
-            console.log(err)
-          })
-		}
-		}
-	},
-	// showModal(){
-	// 	console.log("watch show");
-
-	// 	const page = document.querySelector('body');
-	// 	if(this.showModal){
-	// 		page.style.height = '100vh';
-	// 		page.style.overflow="hidden";
-	// 	}
-	// 	else{
-	// 		page.style.height = '100%';
-	// 		page.style.overflow ="scroll";
-	// 	}
-	// }
-},
+    // 	const page = document.querySelector('body');
+    // 	if(this.showModal){
+    // 		page.style.height = '100vh';
+    // 		page.style.overflow="hidden";
+    // 	}
+    // 	else{
+    // 		page.style.height = '100%';
+    // 		page.style.overflow ="scroll";
+    // 	}
+    // }
+  },
   mounted() {
     this.getNextComic();
   },
@@ -117,7 +124,7 @@ export default {
   flex-wrap: wrap;
 }
 .all-comics__header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
