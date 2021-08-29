@@ -10,6 +10,7 @@
 </template>
 <script>
 import Comic from "../components/Comic";
+import baseURL from "../config.js"
 export default {
     components: {
     Comic,
@@ -21,18 +22,30 @@ export default {
     };
   },
   methods: {
-    async getCharacter() {
-      const baseURL = "https://gateway.marvel.com:443/v1/public/";
+    async getInitialComics() {
       let res = await this.$http.get(
         `${baseURL}characters/1010338/comics?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
       this.comics = res.data.data.results
       console.log("commics", this.comics);
     },
+    getNextComic() {
+      window.onscroll = () => {
+        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          this.$http.get(`${baseURL}characters/1010338/comics?apikey=d2a508ec092852bfb6b4d607085c6e08`).then(response => {
+            this.comics.push(response.data.data.results[0]);
+          });
+        }
+      }
+    }
   },
   mounted() {
-    this.getCharacter();
+    this.getNextComic();
   },
+  beforeMount() {
+    this.getInitialComics();
+  }
 }
 </script>
 
