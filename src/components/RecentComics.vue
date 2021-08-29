@@ -2,58 +2,18 @@
   <div class="news">
     <h4 class="news__header">Recent Comics</h4>
     <div class="news__container">
-      <div class="news__card">
-        <img
-          class="news__photo"
-          src="../assets/hero.jpg"
-          alt="news 1 logo"
-        />
-        <p class="news__genre">Movies</p>
-        <p class="headline">
-          ‘The Marvels’ Arrives in Theaters November 11, 2022
-        </p>
-      </div>
-      <div class="news__card">
-        <img
-          class="news__photo"
-          src="../assets/captain-marvel-disappointing-mcu.png"
-          alt="news 1 logo"
-        />
-        <p class="news__genre">TV SHOWS</p>
-        <p class="headline">
-          Marathon These MCU Moments to Prepare You For the 'WandaVision' Finale
-        </p>
-      </div>
-      <div class="news__card">
-        <img
-          class="news__photo"
-          src="../assets/images.jpg"
-          alt="news 1 logo"
-        />
-        <p class="news__genre">CULTURE & LIFESTYLE</p>
-        <p class="headline">
-          Marvel’s Voices: Victoria Alonso on Marvel Studios’ Approach to
-          Filmmaking, Stan Lee’s Enduring Legacy, and Finding Your Inner Super
-          Hero
-        </p>
-      </div>
-      <div class="news__card">
-        <img
-          class="news__photo"
-          src="../assets/captain-marvel-disappointing-mcu.png"
-          alt="news 1 logo"
-        />
-        <p class="news__genre">Movies</p>
-        <p class="headline">
-          All the Times the MCU's Carol Danvers Paid Tribute to the Captain
-          Marvel Comics
-        </p>
+      <div v-for="comic in comics" :key="comic.id">
+        <Comic :comic="comic"/>
       </div>
     </div>
   </div>
 </template>
 <script>
+import Comic from "./Comic"
 export default {
+  components: {
+    Comic
+  },
   data() {
     return {
       comics: [],
@@ -72,9 +32,9 @@ export default {
       let res = await this.$http.get(
         `${baseURL}characters/1010338/comics?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
-      this.comics = res.data.data
+      this.comics = res.data.data.results.slice(0,6)
       console.log("commics", this.comics)
-      console.log("sliced commics", this.comics.results.slice(0,6))
+      // console.log("sliced commics", this.comics.results.slice(0,6))
     },
   },
   mounted() {
