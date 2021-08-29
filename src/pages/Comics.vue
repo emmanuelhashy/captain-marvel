@@ -33,7 +33,7 @@ export default {
       window.onscroll = () => {
         let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
         if (bottomOfWindow) {
-          this.$http.get(`${baseURL}characters/1010338/comics?apikey=d2a508ec092852bfb6b4d607085c6e08`).then(response => {
+          this.$http.get(`${baseURL}characters/1010338/comics?limit=50&offset=0&apikey=d2a508ec092852bfb6b4d607085c6e08`).then(response => {
             this.comics.push(response.data.data.results[0]);
           });
         }
@@ -56,5 +56,9 @@ export default {
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 3rem;
+}
+.all-comics__body {
+    display: flex;
+    flex-wrap: wrap;
 }
 </style>
