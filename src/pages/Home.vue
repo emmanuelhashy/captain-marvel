@@ -1,20 +1,30 @@
 <template>
-  <div id="app">
-    <Nav/>
-    <router-view></router-view>
-    <Footer/>
+  <div>
+    <Hero/>
+    <News/>
+    <RecentComics/>
+    <featured/>
+    <div class="bottom">
+      <Gaming/>
+    </div>
   </div>
 </template>
 
 <script>
-import Nav from './components/Nav.vue'
-import Footer from './components/Footer.vue'
+import Hero from '../components/Hero.vue'
+import Featured from '../components/Featured.vue'
+import News from '../components/News.vue'
+import Gaming from '../components/Gaming.vue'
+import RecentComics from '../components/RecentComics.vue'
 
 export default {
   name: 'App',
   components: {
-    Nav,
-    Footer
+    Hero,
+    Featured,
+    News,
+    Gaming,
+    RecentComics,
   },
   data() {
     return {
@@ -39,7 +49,6 @@ export default {
 </script>
 
 <style>
-@import './assets/style.css';
 .bottom {
   padding-top: 5rem;
   width: 100%;

@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Hello from '../components/HelloWorld.vue';
+import Home from '../pages/Home.vue';
 import NotFound from '../components/NotFound.vue';
+import Comics from '../pages/Comics.vue';
 
 Vue.use(VueRouter);
 
@@ -10,7 +11,11 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: Hello
+      component: Home
+    },
+    {
+      path: '/comics',
+      component: Comics
     },
     {
       path: '*',
