@@ -30,6 +30,9 @@ export default {
       console.log("commics", this.comics);
     },
   },
+  mounted() {
+    this.getCharacter();
+  },
 }
 </script>
 
