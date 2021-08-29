@@ -71,7 +71,7 @@ export default {
 			this.offset = 0;
 		this.getInitialComics()
 		}else{
-				this.$http.get(`characters/1010338/comics?startYear=${this.year}&apikey=${this.apikey}`)
+				this.$http.get(`${baseURL}characters/1010338/comics?startYear=${this.year}&apikey=${this.apikey}`)
 			.then(res=>{
 				this.comics = res.data.data.results;
 
