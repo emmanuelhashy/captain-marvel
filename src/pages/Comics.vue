@@ -10,7 +10,7 @@
 </template>
 <script>
 import Comic from "../components/Comic";
-import baseURL from "../config.js";
+import {baseURL} from "../config.js";
 export default {
   components: {
     Comic,
