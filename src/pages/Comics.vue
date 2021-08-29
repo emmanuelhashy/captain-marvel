@@ -6,6 +6,7 @@
     <div class="all-comics__body">
       <Comic v-for="comic in comics" :key="comic.id" :comic="comic" />
     </div>
+    <p v-if="loading">loading.....</p>
   </div>
 </template>
 <script>
@@ -20,6 +21,7 @@ export default {
     return {
       comics: [],
       offset: 0,
+      loading: false
     };
   },
   computed: {
@@ -40,11 +42,13 @@ export default {
           document.documentElement.scrollTop + window.innerHeight ===
           document.documentElement.offsetHeight;
         if (bottomOfWindow) {
+            this.loading = true;
           this.$http
             .get(this.url)
             .then((response) => {
                 if (response.data.data.results.length > 1) {
                     response.data.data.results.forEach((item) => this.comics.push(item))
+                    this.loading = false
                 }
             });
         }
