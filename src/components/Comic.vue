@@ -2,7 +2,7 @@
     <div class="news__card">
         <img
           class="news__photo"
-          src="imgUrl"
+          :src="imgUrl"
           alt="news 1 logo"
         />
         <p class="news__genre">Movies</p>
