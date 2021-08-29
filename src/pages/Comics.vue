@@ -1,52 +1,63 @@
 <template>
   <div class="all-comics">
-      <div class="all-comics__header">
-        <h1 class="title">All Comics</h1>
-      </div>
-      <div class="all-comics__body">
-          <Comic v-for="comic in comics" :key="comic.id" :comic="comic"/>
-      </div>
+    <div class="all-comics__header">
+      <h1 class="title">All Comics</h1>
+    </div>
+    <div class="all-comics__body">
+      <Comic v-for="comic in comics" :key="comic.id" :comic="comic" />
+    </div>
   </div>
 </template>
 <script>
 import Comic from "../components/Comic";
-import baseURL from "../config.js"
+import baseURL from "../config.js";
 export default {
-    components: {
+  components: {
     Comic,
   },
-  name: 'Comics',
-   data() {
+  name: "Comics",
+  data() {
     return {
       comics: [],
+      offset: 0,
     };
+  },
+  computed: {
+    url() {
+      return `${baseURL}characters/1010338/comics?limit=50&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
+    },
   },
   methods: {
     async getInitialComics() {
-      let res = await this.$http.get(
-        `${baseURL}characters/1010338/comics?apikey=d2a508ec092852bfb6b4d607085c6e08`
-      );
-      this.comics = res.data.data.results
+      let res = await this.$http.get(this.url);
+      this.comics = res.data.data.results;
       console.log("commics", this.comics);
     },
     getNextComic() {
       window.onscroll = () => {
-        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        this.offset += 50;
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight ===
+          document.documentElement.offsetHeight;
         if (bottomOfWindow) {
-          this.$http.get(`${baseURL}characters/1010338/comics?limit=50&offset=0&apikey=d2a508ec092852bfb6b4d607085c6e08`).then(response => {
-            this.comics.push(response.data.data.results[0]);
-          });
+          this.$http
+            .get(this.url)
+            .then((response) => {
+                if (response.data.data.results.length > 1) {
+                    response.data.data.results.forEach((item) => this.comics.push(item))
+                }
+            });
         }
-      }
-    }
+      };
+    },
   },
   mounted() {
     this.getNextComic();
   },
   beforeMount() {
     this.getInitialComics();
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -58,7 +69,7 @@ export default {
   padding-bottom: 3rem;
 }
 .all-comics__body {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
