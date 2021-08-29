@@ -49,7 +49,7 @@ export default {
     },
   },
   mounted() {
-    this.getCharacter();
+    // this.getCharacter();
   },
 }
 </script>

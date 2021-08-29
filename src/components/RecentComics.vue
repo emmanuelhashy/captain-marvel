@@ -60,11 +60,20 @@ export default {
     };
   },
   methods: {
+    // async getCharacter() {
+    //   let res = await this.$axios.$get(
+    //     "characters/1010338/comics?apikey=6740ae373da1c47cbdc80ee83dfc9158"
+    //   );
+    //   this.comics = res.data.results.splice(0, 6);
+    // },
+
     async getCharacter() {
-      let res = await this.$axios.$get(
-        "characters/1010338/comics?apikey=6740ae373da1c47cbdc80ee83dfc9158"
+      const baseURL = 'https://gateway.marvel.com:443/v1/public/'
+      let res = await this.$http.get(
+        `${baseURL}characters?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
-      this.comics = res.data.results.splice(0, 6);
+      this.comics = res.data
+      console.log("commics", this.comics)
     },
   },
   mounted() {
