@@ -75,10 +75,7 @@ export default {
   watch: {
     year() {
       if (this.year) {
-        if (this.year === "All") {
-          this.offset = 0;
-          this.getComics();
-        } 
+        this.getComics();
       }
     },
     // showModal(){
