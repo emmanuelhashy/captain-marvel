@@ -49,7 +49,7 @@ export default {
     async getComics() {
       this.loading = true;
       let res = await this.$http.get(this.url)
-		this.comics = res.data.results;
+		this.comics = res.data.data.results;
         this.loading = false;
     },
     // getNextComic() {
@@ -71,8 +71,8 @@ export default {
         this.$http
           .get(this.url)
           .then((res) => {
-            if (res.data.results.length > 1) {
-              res.data.results.forEach((item) => this.comics.push(item))
+            if (res.data.data.results.length > 1) {
+              res.data.data.results.forEach((item) => this.comics.push(item))
               $state.loaded()
             } else {
               $state.complete()
