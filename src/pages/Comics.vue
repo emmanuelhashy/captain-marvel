@@ -42,25 +42,15 @@ export default {
   },
   computed: {
     url() {
-      return `${baseURL}characters/1010338/comics?limit=40&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
+      return `${baseURL}characters/1010338/comics?limit=50&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
     },
   },
   methods: {
-    getComics() {
+    async getComics() {
       this.loading = true;
-      this.$http
-        .get(this.url)
-        .then((response) => {
-          if (response.data.data.results.length > 1) {
-            response.data.data.results.forEach((item) =>
-              this.comics.push(item)
-            );
-          }
-          this.loading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      let res = await this.$axios.$get(this.url)
+		this.comics = res.data.results;
+        this.loading = false;
     },
     // getNextComic() {
     //   window.onscroll = () => {
