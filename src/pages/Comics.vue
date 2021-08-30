@@ -1,7 +1,7 @@
 <template>
   <div class="all-comics">
     <div class="all-comics__header">
-      <h1 class="title">All Comics</h1>
+      <h2 class="title">All Comics</h2>
       <div class="all-comic__sort">
         <h4>Sort by Year</h4>
         <select name="year" id="year" v-model="year">
@@ -111,9 +111,8 @@ export default {
 <style scoped>
 .all-comics {
   padding: 0 10rem;
-  margin-top: 4.5rem;
+  margin-top: 3rem;
   width: 100%;
-  padding-top: 1rem;
   padding-bottom: 3rem;
 }
 .all-comics__body {
@@ -123,6 +122,7 @@ export default {
 .all-comics__header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 .all-comics__sort {
   display: flex;
