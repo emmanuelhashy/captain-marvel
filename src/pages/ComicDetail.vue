@@ -1,12 +1,21 @@
 <template>
   <div class="comic-detail">
-    <img src="" alt="" />
+    <img
+          class="comic__photo"
+          :src="imgUrl"
+          alt="comic logo"
+        />
     <div class="comic-detail__text">
-      <h3>Title</h3>
-      <p>Published:</p>
-      <p>Writer:</p>
+      <h3>{{comic.title}}</h3>
+      <p>Published:{{comic.modified}}</p>
+      <div>
+        <p>characters</p>
+        <div v-for="character in comic.characters.items" :key="character.name">
+          <p>{{character.name}}</p>
+        </div>
+      </div>
       <p>Penciler:</p>
-      <p>Description:</p>
+      <p>Description:{{comic.description}}</p>
       <p>Colorist:</p>
       <p>Editor:</p>
     </div>
@@ -19,13 +28,18 @@ export default {
       comic: {},
     };
   },
+  computed: {
+        imgUrl: function () {
+            return this.comic.images[0]? this.comic.images[0].path + "." + this.comic.images[0].extension : undefined
+        }
+    },
   methods: {
     async getComicById() {
         const baseURL = "https://gateway.marvel.com:443/v1/public/";
       let res = await this.$http.get(
         `${baseURL}comics/${this.$route.params.comicId}?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
-      this.comic = res.data;
+      this.comic = res.data.data.results[0];
       console.log("commics", this.comic);
     }
   },
