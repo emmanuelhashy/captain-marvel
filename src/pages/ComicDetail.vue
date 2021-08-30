@@ -23,7 +23,7 @@ export default {
     async getComicById() {
         const baseURL = "https://gateway.marvel.com:443/v1/public/";
       let res = await this.$http.get(
-        `${baseURL}characters/1010338/comics/${this.$route.params.comicId}?apikey=d2a508ec092852bfb6b4d607085c6e08`
+        `${baseURL}comics/${this.$route.params.comicId}?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
       this.comic = res.data;
       console.log("commics", this.comic);
