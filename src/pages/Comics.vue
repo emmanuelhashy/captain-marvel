@@ -48,7 +48,7 @@ export default {
   methods: {
     async getComics() {
       this.loading = true;
-      let res = await this.$axios.$get(this.url)
+      let res = await this.$http.get(this.url)
 		this.comics = res.data.results;
         this.loading = false;
     },
