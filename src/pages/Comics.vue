@@ -33,7 +33,7 @@ export default {
       offset: 0,
       loading: false,
       apikey: "d2a508ec092852bfb6b4d607085c6e08",
-      year: "All"
+      year: "All",
     };
   },
   computed: {
@@ -42,28 +42,33 @@ export default {
     },
   },
   methods: {
-    async getInitialComics() {
-      let res = await this.$http.get(this.url);
-      this.comics = res.data.data.results;
-      console.log("commics", this.comics);
+    getComics() {
+      this.loading = true;
+      this.$http
+        .get(
+          `${baseURL}characters/1010338/comics?limit=20&offset=${(this.offset += 10)}&apikey=d2a508ec092852bfb6b4d607085c6e08`
+        )
+        .then((response) => {
+          if (response.data.data.results.length > 1) {
+            response.data.data.results.forEach((item) =>
+              this.comics.push(item)
+            );
+          }
+          this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     getNextComic() {
       window.onscroll = () => {
         // this.offset += 50;
         let bottomOfWindow =
-          document.documentElement.scrollTop + window.innerHeight ===
-          document.documentElement.offsetHeight;
+          document.documentElement.scrollTop + document.documentElement.clientHeight >=
+          document.documentElement.scrollHeight -10;
         if (bottomOfWindow) {
           console.log("bottomOfWindow");
-          this.loading = true;
-          this.$http.get(`${baseURL}characters/1010338/comics?limit=50&offset=${this.offset+=50}&apikey=d2a508ec092852bfb6b4d607085c6e08`).then((response) => {
-            if (response.data.data.results.length > 1) {
-              response.data.data.results.forEach((item) =>
-                this.comics.push(item)
-              );
-            }
-            this.loading = false;
-          });
+          this.getComics()
         }
       };
     },
@@ -104,10 +109,7 @@ export default {
   },
   mounted() {
     this.getNextComic();
-  },
-  beforeMount() {
-    this.getInitialComics();
-  },
+  }
 };
 </script>
 
