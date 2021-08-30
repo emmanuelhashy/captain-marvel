@@ -19,7 +19,7 @@
         <p class="text-box__heading">Creators</p>
         <div v-for="creator in comic.creators.items" :key="creator.name">
           <p><strong>Name: </strong>{{creator.name}}</p>
-          <p><strong>Role:</strong>{{creator.role}}</p>
+          <p class="role"><strong>Role:</strong>{{creator.role}}</p>
         </div>
       </div>
       <p class="format"><strong>Format: </strong>{{comic.format}}</p>
@@ -71,8 +71,8 @@ export default {
   flex-direction: column;
 }
 .comic__photo {
-  width: 5rem;
-  height: 50rem;
+  width: 100%;
+  height: 45rem;
 }
 .comic__title {
   margin-bottom: 2rem;
@@ -81,7 +81,11 @@ export default {
   margin-bottom: 1rem;
 }
 .text-box__heading {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 8900;
+  margin-bottom: .6rem;
+}
+.role {
+  margin-bottom: .5rem;
 }
 </style>
