@@ -69,9 +69,10 @@ export default {
 .comic-detail__text {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 .comic__photo {
-  width: 100%;
+  width: 50%;
   height: 45rem;
 }
 .comic__title {
