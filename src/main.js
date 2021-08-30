@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import infiniteScroll from 'vue-infinite-scroll'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -19,6 +19,9 @@ library.add(far)
 // Register the component globally
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.prototype.$http = axios
+
+Vue.use(infiniteScroll)
+
 Vue.config.productionTip = false
 
 new Vue({

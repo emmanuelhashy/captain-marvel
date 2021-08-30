@@ -15,8 +15,12 @@
     </div>
     <div class="all-comics__body">
       <Comic v-for="comic in comics" :key="comic.id" :comic="comic" />
+      <infinite-loading
+        spinner="spiral"
+        @infinite="infiniteScroll"
+      ></infinite-loading>
     </div>
-    <h1 v-if="loading">loading.....</h1>
+    <p>Loading...</p>
   </div>
 </template>
 <script>
@@ -44,7 +48,6 @@ export default {
   methods: {
     getComics() {
       this.loading = true;
-      this.offset += 20
       this.$http
         .get(this.url)
         .then((response) => {
@@ -59,18 +62,37 @@ export default {
           console.log(err);
         });
     },
-    getNextComic() {
-      window.onscroll = () => {
-        // this.offset += 50;
-        let bottomOfWindow =
-          document.documentElement.scrollTop + document.documentElement.clientHeight >=
-          document.documentElement.scrollHeight -10;
-        if (bottomOfWindow) {
-          console.log("bottomOfWindow");
-          this.getComics()
-        }
-      };
-    },
+    // getNextComic() {
+    //   window.onscroll = () => {
+    //     // this.offset += 50;
+    //     let bottomOfWindow =
+    //       document.documentElement.scrollTop +
+    //         document.documentElement.clientHeight >=
+    //       document.documentElement.scrollHeight - 10;
+    //     if (bottomOfWindow) {
+    //       console.log("bottomOfWindow");
+    //       this.getComics();
+    //     }
+    //   };
+    // },
+    infiniteScroll($state) {
+      setTimeout(() => {
+        this.offset+=50
+        this.$axios
+          .$get(this.url)
+          .then((res) => {
+            if (res.data.results.length > 1) {
+              res.data.results.forEach((item) => this.comics.push(item))
+              $state.loaded()
+            } else {
+              $state.complete()
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }, 500)
+    }
   },
   watch: {
     year() {
@@ -107,9 +129,9 @@ export default {
     // }
   },
   mounted() {
-      this.getComics();
-    this.getNextComic();
-  }
+    this.getComics();
+    // this.getNextComic();
+  },
 };
 </script>
 
