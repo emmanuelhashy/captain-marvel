@@ -61,8 +61,8 @@ export default {
               response.data.data.results.forEach((item) =>
                 this.comics.push(item)
               );
-              this.loading = false;
             }
+            this.loading = false;
           });
         }
       };

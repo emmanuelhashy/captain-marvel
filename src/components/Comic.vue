@@ -16,7 +16,7 @@ export default {
     props: ['comic'],
     computed: {
         imgUrl: function () {
-            return this.comic.images[0].path + "." + this.comic.images[0].extension
+            return this.comic.images[0]? this.comic.images[0].path + "." + this.comic.images[0].extension : undefined
         }
     }
 }
