@@ -21,7 +21,7 @@ const router = new VueRouter({
       component: Comics
     },
     {
-      path: '/comic-detail/:comicId',
+      path: '/comic-detail',
       name: "Comic-detail",
       component: Comic
     },
