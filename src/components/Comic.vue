@@ -1,13 +1,13 @@
 <template>
-    <div class="news__card">
+    <div class="comic__card">
         <img
-          class="news__photo"
+          class="comic__photo"
           :src="imgUrl"
-          alt="news 1 logo"
+          alt="comic logo"
         />
-        <p class="news__genre">Movies</p>
+        <p class="comic__genre">{{comic.format}}</p>
         <p class="headline">
-          ‘The Marvels’ Arrives in Theaters November 11, 2022
+          {{comic.title}}
         </p>
       </div>
 </template>
@@ -21,3 +21,34 @@ export default {
     }
 }
 </script>
+<style scoped>
+.comic__card {
+  width: 20rem;
+  margin-right: 0.5rem;
+}
+.comic__card:hover {
+  cursor: pointer;
+}
+.comic__photo {
+  width: 100%;
+  height: 15rem;
+}
+.comic__genre {
+  color: #999;
+  text-transform: uppercase;
+  font-size: .9rem;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.headline {
+  color: #fff;
+  font-weight: 700;
+  margin: 8px 0 0;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+}
+.headline:hover {
+  color: red;
+}
+</style>

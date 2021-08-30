@@ -2,8 +2,8 @@
   <div class="all-comics">
     <div class="all-comics__header">
       <h1 class="title">All Comics</h1>
-      <div class="sort-con container">
-        <h3>Sort by Year</h3>
+      <div class="all-comic__sort">
+        <h4>Sort by Year</h4>
         <select name="year" id="year" v-model="year">
           <option value="" hidden>Select Year</option>
           <option value="All">All</option>
@@ -20,7 +20,6 @@
         spinner="spiral"
         @infinite="infiniteScroll"
       ></infinite-loading>
-    <p>Loading...</p>
   </div>
 </template>
 <script>
@@ -35,7 +34,6 @@ export default {
     return {
       comics: [],
       offset: 0,
-      loading: false,
       apikey: "d2a508ec092852bfb6b4d607085c6e08",
       year: "All",
     };
@@ -47,24 +45,9 @@ export default {
   },
   methods: {
     async getComics() {
-      this.loading = true;
       let res = await this.$http.get(this.url)
 		this.comics = res.data.data.results;
-        this.loading = false;
     },
-    // getNextComic() {
-    //   window.onscroll = () => {
-    //     // this.offset += 50;
-    //     let bottomOfWindow =
-    //       document.documentElement.scrollTop +
-    //         document.documentElement.clientHeight >=
-    //       document.documentElement.scrollHeight - 10;
-    //     if (bottomOfWindow) {
-    //       console.log("bottomOfWindow");
-    //       this.getComics();
-    //     }
-    //   };
-    // },
     infiniteScroll($state) {
       setTimeout(() => {
         this.offset+=50
@@ -140,5 +123,9 @@ export default {
 .all-comics__header {
   display: flex;
   justify-content: space-between;
+}
+.all-comics__sort {
+  display: flex;
+  flex-direction: column;
 }
 </style>
