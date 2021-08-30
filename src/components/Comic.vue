@@ -23,8 +23,8 @@ export default {
 </script>
 <style scoped>
 .comic__card {
-  width: 12rem;
-  margin-right: 0.5rem;
+  width: 10rem;
+  margin-right: 0.4rem;
 }
 .comic__card:hover {
   cursor: pointer;
@@ -41,7 +41,7 @@ export default {
   margin-top: 5px;
 }
 .headline {
-  color: #000;
+  color: rgb(9, 9, 83);
   font-weight: 700;
   margin: 8px 0 0;
   padding: 0;
