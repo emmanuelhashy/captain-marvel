@@ -26,13 +26,9 @@ export default {
     data() {
     return {
       comic: {},
+      imgUrl:""
     };
   },
-  computed: {
-        imgUrl: function () {
-            return this.comic.images[0]? this.comic.images[0].path + "." + this.comic.images[0].extension : undefined
-        }
-    },
   methods: {
     async getComicById() {
         const baseURL = "https://gateway.marvel.com:443/v1/public/";
@@ -41,6 +37,11 @@ export default {
       );
       this.comic = res.data.data.results[0];
       console.log("commics", this.comic);
+    }
+  },
+  watch: {
+    comic() {
+      this.imgUrl = this.comic.images[0]? this.comic.images[0].path + "." + this.comic.images[0].extension : undefined
     }
   },
   mounted(){
