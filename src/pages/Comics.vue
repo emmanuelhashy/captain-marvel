@@ -49,14 +49,14 @@ export default {
     },
     getNextComic() {
       window.onscroll = () => {
-        this.offset += 50;
+        // this.offset += 50;
         let bottomOfWindow =
           document.documentElement.scrollTop + window.innerHeight ===
           document.documentElement.offsetHeight;
         if (bottomOfWindow) {
           console.log("bottomOfWindow");
           this.loading = true;
-          this.$http.get(this.url).then((response) => {
+          this.$http.get(`${baseURL}characters/1010338/comics?limit=50&offset=${this.offset+=50}&apikey=d2a508ec092852bfb6b4d607085c6e08`).then((response) => {
             if (response.data.data.results.length > 1) {
               response.data.data.results.forEach((item) =>
                 this.comics.push(item)
