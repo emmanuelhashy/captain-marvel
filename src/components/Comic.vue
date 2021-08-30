@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         viewComicDetails() {
-            this.$router.push({ path: 'comic-detail', params: { comicId: this.comic.id } })
+            this.$router.push({ name: 'Comic-detail', params: { comicId: this.comic.id } })
         }
     }
 }
