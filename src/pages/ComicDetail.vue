@@ -7,7 +7,7 @@
         />
     <div class="comic-detail__text">
       <h3 class="comic__title">{{comic.title}}</h3>
-      <p class="date">Created: {{comic.dates[0].date | luxon:format('yyyy')}}</p>
+      <p class="date"><strong>Created: </strong>{{comic.dates[0].date | luxon({ input: {format: "yyyy"} } )}}</p>
       
       <div class="text-box">
         <p class="text-box__heading">Characters</p>
@@ -18,12 +18,12 @@
       <div class="text-box">
         <p class="text-box__heading">Creators</p>
         <div v-for="creator in comic.creators.items" :key="creator.name">
-          <p>Name: {{creator.name}}</p>
-          <p>Role: {{creator.role}}</p>
+          <p><strong>Name: </strong>{{creator.name}}</p>
+          <p><strong>Role:</strong>{{creator.role}}</p>
         </div>
       </div>
-      <p class="format">Format: {{comic.format}}</p>
-      <p class="description">Description:{{comic.description ? comic.description : "Not available"}}</p>
+      <p class="format"><strong>Format: </strong>{{comic.format}}</p>
+      <p class="description"><strong>Description: </strong>{{comic.description ? comic.description : "Not available"}}</p>
     </div>
   </div>
 </template>
@@ -64,6 +64,7 @@ export default {
   padding: 1rem 10rem;
   width: 100;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .comic-detail__text {
   display: flex;
@@ -71,7 +72,7 @@ export default {
 }
 .comic__photo {
   width: 5rem;
-  height: 10rem;
+  height: 50rem;
 }
 .comic__title {
   margin-bottom: 2rem;
