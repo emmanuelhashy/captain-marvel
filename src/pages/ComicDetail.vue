@@ -7,17 +7,23 @@
         />
     <div class="comic-detail__text">
       <h3>{{comic.title}}</h3>
-      <p>Published:{{comic.modified}}</p>
+      <p>{{comic.dates[0].date | luxon:format('yyyy')}}</p>
+      
       <div>
-        <p>characters</p>
+        <p>Characters</p>
         <div v-for="character in comic.characters.items" :key="character.name">
           <p>{{character.name}}</p>
         </div>
       </div>
-      <p>Penciler:</p>
-      <p>Description:{{comic.description}}</p>
-      <p>Colorist:</p>
-      <p>Editor:</p>
+      <div>
+        <p>Creators</p>
+        <div v-for="creator in comic.creators.items" :key="creator.name">
+          <p>Name: {{creator.name}}</p>
+          <p>Role: {{creator.role}}</p>
+        </div>
+      </div>
+      <p>Format: {{comic.format}}</p>
+      <p>Description:{{comic.description ? comic.description : "Description not available"}}</p>
     </div>
   </div>
 </template>
@@ -41,7 +47,7 @@ export default {
   },
   watch: {
     comic() {
-      this.imgUrl = this.comic.images[0]? this.comic.images[0].path + "." + this.comic.images[0].extension : undefined
+      this.imgUrl = this.comic.thumbnail? this.comic.thumbnail.path + "." + this.comic.thumbnail.extension : undefined
     }
   },
   mounted(){

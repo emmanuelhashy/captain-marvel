@@ -8,6 +8,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import router from './router';
 import axios from 'axios'
+import VueLuxon from "vue-luxon";
 
  
 // You can add your icons directly in this plugin. See other examples for how you
@@ -21,6 +22,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.prototype.$http = axios
 
 Vue.use(InfiniteLoading )
+Vue.use(VueLuxon);
 
 Vue.config.productionTip = false
 
