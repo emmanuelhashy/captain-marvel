@@ -107,6 +107,7 @@ export default {
     // }
   },
   mounted() {
+      this.getComics();
     this.getNextComic();
   }
 };
