@@ -63,6 +63,7 @@ export default {
   display: flex;
   padding: 1rem 10rem;
   width: 100;
+  flex-wrap: wrap;
 }
 .comic-detail__text {
   display: flex;
