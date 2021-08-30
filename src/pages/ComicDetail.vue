@@ -30,7 +30,10 @@ export default {
     }
   },
   mounted(){
-    this.getComicById()
+    if(this.$route.params.comicId) {
+      console.log("Route params", this.$route.params)
+      this.getComicById()
+    }
   }
 }
 </script>
