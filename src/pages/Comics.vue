@@ -33,21 +33,20 @@ export default {
       offset: 0,
       loading: false,
       apikey: "d2a508ec092852bfb6b4d607085c6e08",
-      year: "All",
+      year: "",
     };
   },
   computed: {
     url() {
-      return `${baseURL}characters/1010338/comics?limit=50&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
+      return `${baseURL}characters/1010338/comics?${this.year? "startYear="+this.year : ""}limit=20&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
     },
   },
   methods: {
     getComics() {
       this.loading = true;
+      this.offset += 10
       this.$http
-        .get(
-          `${baseURL}characters/1010338/comics?limit=20&offset=${(this.offset += 10)}&apikey=d2a508ec092852bfb6b4d607085c6e08`
-        )
+        .get(this.url)
         .then((response) => {
           if (response.data.data.results.length > 1) {
             response.data.data.results.forEach((item) =>
@@ -78,19 +77,8 @@ export default {
       if (this.year) {
         if (this.year === "All") {
           this.offset = 0;
-          this.getInitialComics();
-        } else {
-          this.$http
-            .get(
-              `${baseURL}characters/1010338/comics?startYear=${this.year}&apikey=${this.apikey}`
-            )
-            .then((res) => {
-              this.comics = res.data.data.results;
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
+          this.getComics();
+        } 
       }
     },
     // showModal(){
