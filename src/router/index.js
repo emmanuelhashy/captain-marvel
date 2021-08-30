@@ -12,14 +12,17 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
+      name: "Home",
       component: Home
     },
     {
       path: '/comics',
+      name: "Comics",
       component: Comics
     },
     {
       path: '/comic-detail/:comicId',
+      name: "Comic-detail",
       component: Comic
     },
     {
