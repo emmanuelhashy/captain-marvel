@@ -7,7 +7,7 @@
         />
     <div class="comic-detail__text">
       <h3 class="comic__title">{{comic.title}}</h3>
-      <p class="date"><strong>Created: </strong>{{comic.dates[0].date | luxon({ input: {format: "yyyy"} } )}}</p>
+      <p class="date"><strong>Created: </strong>{{comic.dates[0].date | luxon:format('yyyy')}}</p>
       
       <div class="text-box">
         <p class="text-box__heading">Characters</p>
