@@ -1,5 +1,5 @@
 <template>
-    <div class="comic__card">
+    <div class="comic__card" @click="viewComicDetails">
         <img
           class="comic__photo"
           :src="imgUrl"
@@ -17,6 +17,11 @@ export default {
     computed: {
         imgUrl: function () {
             return this.comic.images[0]? this.comic.images[0].path + "." + this.comic.images[0].extension : undefined
+        }
+    },
+    methods: {
+        viewComicDetails() {
+            this.$router.push({ name: 'comic-detail', params: { comicId: this.comic.id } })
         }
     }
 }
@@ -41,7 +46,7 @@ export default {
   margin-top: 5px;
 }
 .headline {
-  color: rgb(9, 9, 83);
+  color: rgb(17, 17, 255);
   font-weight: 700;
   margin: 8px 0 0;
   padding: 0;
