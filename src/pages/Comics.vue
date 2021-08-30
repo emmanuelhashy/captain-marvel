@@ -38,13 +38,13 @@ export default {
   },
   computed: {
     url() {
-      return `${baseURL}characters/1010338/comics?startYear=${this.year}limit=20&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
+      return `${baseURL}characters/1010338/comics?limit=40&offset=${this.offset}&apikey=d2a508ec092852bfb6b4d607085c6e08`;
     },
   },
   methods: {
     getComics() {
       this.loading = true;
-      this.offset += 10
+      this.offset += 20
       this.$http
         .get(this.url)
         .then((response) => {
