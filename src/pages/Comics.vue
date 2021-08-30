@@ -68,8 +68,8 @@ export default {
     infiniteScroll($state) {
       setTimeout(() => {
         this.offset+=50
-        this.$axios
-          .$get(this.url)
+        this.$http
+          .get(this.url)
           .then((res) => {
             if (res.data.results.length > 1) {
               res.data.results.forEach((item) => this.comics.push(item))
