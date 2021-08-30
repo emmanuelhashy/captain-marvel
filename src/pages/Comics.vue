@@ -15,12 +15,12 @@
     </div>
     <div class="all-comics__body">
       <Comic v-for="comic in comics" :key="comic.id" :comic="comic" />
+    </div>
       <infinite-loading
         spinner="spiral"
         @infinite="infiniteScroll"
       ></infinite-loading>
-    </div>
-    <!-- <p>Loading...</p> -->
+    <p>Loading...</p>
   </div>
 </template>
 <script>
