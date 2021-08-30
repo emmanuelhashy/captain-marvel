@@ -20,7 +20,7 @@
         @infinite="infiniteScroll"
       ></infinite-loading>
     </div>
-    <p>Loading...</p>
+    <!-- <p>Loading...</p> -->
   </div>
 </template>
 <script>
