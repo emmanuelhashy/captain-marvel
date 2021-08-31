@@ -73,12 +73,12 @@ export default {
     padding-top: 1rem;
     padding-bottom: 3rem;
   }
-}
-
-@media screen and (max-width: 768px) {
   .comics__container {
     flex-wrap: wrap;
   }
+}
+
+@media screen and (max-width: 768px) {
   .comics__card {
   width: 15rem;
   margin-top: 2rem;

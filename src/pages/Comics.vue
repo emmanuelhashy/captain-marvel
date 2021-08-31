@@ -117,7 +117,6 @@ export default {
 }
 .all-comics__body {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 .all-comics__header {
@@ -128,5 +127,26 @@ export default {
 .all-comics__sort {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+  .all-comics {
+    padding: 0 4rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+  .all-comics__body {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comics__card {
+  width: 15rem;
+  margin-top: 2rem;
+}
+.comics__header {
+  text-align: center;
+}
 }
 </style>
