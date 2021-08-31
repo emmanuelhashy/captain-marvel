@@ -6,7 +6,7 @@
     </div>
     <a
       target="_self"
-      style="margin: 1rem; text-transform: uppercase"
+      style="margin: 2rem; text-transform: uppercase"
       class="cta-btn cta-btn--solid cta-btn--red"
       @click="viewAllComics"
       ><div class="innerFill"><span>VIEW ALL</span></div></a
@@ -79,6 +79,11 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .comics {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
   .comics__card {
   width: 15rem;
   margin-top: 2rem;

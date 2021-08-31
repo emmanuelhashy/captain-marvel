@@ -24,9 +24,11 @@
         </div>
         <div class="text-box">
           <p class="text-box__heading">Creators</p>
-          <div v-for="creator in comic.creators.items" :key="creator.name">
-            <p><strong>Name: </strong>{{ creator.name }}</p>
-            <p class="role"><strong>Role:</strong>{{ creator.role }}</p>
+          <div class="creators" v-for="creator in comic.creators.items" :key="creator.name">
+            <div class="creator">
+              <p><strong>Name: </strong>{{ creator.name }}</p>
+              <p class="role"><strong>Role:</strong>{{ creator.role }}</p>
+            </div>
           </div>
         </div>
         <p class="format"><strong>Format: </strong>{{ comic.format }}</p>
@@ -132,11 +134,23 @@ export default {
   .all-comics__body {
     flex-wrap: wrap;
   }
+  .comic__title {
+  margin-top: 2rem;
+}
+  .creators {
+    display: flex;
+  }
+  .creator {
+    margin-right: 1rem;
+  }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .comic-detail__text, .comic__photo {
   width: 100%;
+}
+.comic__photo {
+  margin-right: 0;
 }
 }
 </style>
