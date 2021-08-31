@@ -118,8 +118,6 @@
   padding: 0 10rem;
   background-color: #202020;
   padding-top: 5rem;
-  position: absolute;
-  bottom: 0;
 }
 .footer__top {
   display: flex;
