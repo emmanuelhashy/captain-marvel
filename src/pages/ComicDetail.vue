@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <div class="header">
-      <router-link to="/comics"><font-awesome-icon icon="arrow-left" class="icon"/> Back to series</router-link>
+      <p @click="$router.go(-1)"><font-awesome-icon icon="arrow-left" class="icon"/> Back to series</p>
       
     </div>
     <div class="comic-detail">
