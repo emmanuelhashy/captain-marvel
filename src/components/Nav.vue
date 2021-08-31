@@ -55,6 +55,9 @@
       </div>
     </nav>
     <nav class="second-nav">
+      <div class="icon-container">
+        <font-awesome-icon icon="times" class="icon times" @click="toggleNav(false)" />
+      </div>
       <a href="#" class="nav-link">videos</a>
       <a href="#" class="nav-link">characters</a>
       <a href="#" class="nav-link">comics</a>
@@ -177,6 +180,9 @@ export default {
   font-size: 13px;
   font-weight: 700;
 }
+.icon-container {
+  display: none;
+}
 .second-nav .nav-link {
   text-decoration: none;
   margin-right: 1rem;
@@ -238,6 +244,15 @@ export default {
     transform: translate(-100%);
     transition: transform .5s ease-in;
     padding-top: 3rem;
+  }
+  .icon-container {
+    position: relative;
+    display: block;
+  }
+  .times {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
   }
   .second-nav .nav-link  {
     font-size: 1rem;
