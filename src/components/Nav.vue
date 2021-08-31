@@ -91,11 +91,20 @@ export default {
   methods: {
     toggleNav(state) {
       this.showNav = state;
+      console.log("state", state)
       const bars = document.querySelector('.bars');
       const secondNav = document.querySelector('.second-nav');
+      const times = document.querySelector('.times');
       const navLinks = document.querySelectorAll('.second-nav a');
 
       bars.addEventListener('click', () => {
+        secondNav.classList.toggle("nav-active")
+        navLinks.forEach((link, index) => {
+          link.style.animmation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`
+        })
+      })
+
+      times.addEventListener('click', () => {
         secondNav.classList.toggle("nav-active")
         navLinks.forEach((link, index) => {
           link.style.animmation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`
@@ -243,12 +252,13 @@ export default {
     transition: transform .5s ease-in;
     padding-top: 3rem;
   }
-  /* .times {
+  .times {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    font-size: 8.5rem;
-  } */
+    font-size: 1.5rem;
+    display: block;
+  }
   .second-nav .nav-link  {
     font-size: 1rem;
     margin-bottom: 1rem;
