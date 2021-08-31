@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="detail">
     <div class="header">
-      <router-link to="/comics"><i class="fas fa-arrow-left"></i>Back to series</router-link>
+      <router-link to="/comics"><font-awesome-icon icon="arrow-left" class="icon" />Back to series</router-link>
+      
     </div>
     <div class="comic-detail">
       <img class="comic__photo" :src="imgUrl" alt="comic logo" />
@@ -71,6 +72,9 @@ export default {
 };
 </script>
 <style scoped>
+.detail {
+  min-height: 100rem;
+}
 .header {
   display: flex;
   justify-content: start;
@@ -78,6 +82,7 @@ export default {
   margin-bottom: 1.5rem;
   font-weight: 900;
   font-size: 1rem;
+  padding: 2rem 10rem;
 }
 .comic-detail {
   display: flex;
@@ -107,7 +112,7 @@ export default {
 }
 .text-box__heading {
   font-size: 1.5rem;
-  font-weight: 8900;
+  font-weight: 900;
   margin-bottom: 0.6rem;
 }
 .role {
