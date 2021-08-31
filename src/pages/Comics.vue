@@ -118,6 +118,7 @@ export default {
 .all-comics__body {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .all-comics__header {
   display: flex;
