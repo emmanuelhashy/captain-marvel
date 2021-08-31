@@ -75,7 +75,6 @@ export default {
 </script>
 <style scoped>
 .detail {
-  min-height: 60rem;
   height: 100%;
 }
 .header {
