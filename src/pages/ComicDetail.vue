@@ -1,64 +1,82 @@
 <template>
-  <div class="comic-detail">
-    <img
-          class="comic__photo"
-          :src="imgUrl"
-          alt="comic logo"
-        />
-    <div class="comic-detail__text">
-      <h3 class="comic__title">{{comic.title}}</h3>
-      <p class="date"><strong>Created: </strong>{{comic.dates[0].date | luxon:format('yyyy')}}</p>
-      
-      <div class="text-box">
-        <p class="text-box__heading">Characters</p>
-        <div v-for="character in comic.characters.items" :key="character.name">
-          <p>{{character.name}}</p>
+  <div>
+    <div class="header">
+      <router-link><i class="fas fa-arrow-left"></i>Back to series</router-link>
+    </div>
+    <div class="comic-detail">
+      <img class="comic__photo" :src="imgUrl" alt="comic logo" />
+      <div class="comic-detail__text">
+        <h3 class="comic__title">{{ comic.title }}</h3>
+        <p class="date">
+          <strong>Created: </strong
+          >{{comic.dates[0].date | luxon:format('yyyy')}}
+        </p>
+
+        <div class="text-box">
+          <p class="text-box__heading">Characters</p>
+          <div
+            v-for="character in comic.characters.items"
+            :key="character.name"
+          >
+            <p>{{ character.name }}</p>
+          </div>
         </div>
-      </div>
-      <div class="text-box">
-        <p class="text-box__heading">Creators</p>
-        <div v-for="creator in comic.creators.items" :key="creator.name">
-          <p><strong>Name: </strong>{{creator.name}}</p>
-          <p class="role"><strong>Role:</strong>{{creator.role}}</p>
+        <div class="text-box">
+          <p class="text-box__heading">Creators</p>
+          <div v-for="creator in comic.creators.items" :key="creator.name">
+            <p><strong>Name: </strong>{{ creator.name }}</p>
+            <p class="role"><strong>Role:</strong>{{ creator.role }}</p>
+          </div>
         </div>
+        <p class="format"><strong>Format: </strong>{{ comic.format }}</p>
+        <p class="description">
+          <strong>Description: </strong
+          >{{ comic.description ? comic.description : "Not available" }}
+        </p>
       </div>
-      <p class="format"><strong>Format: </strong>{{comic.format}}</p>
-      <p class="description"><strong>Description: </strong>{{comic.description ? comic.description : "Not available"}}</p>
     </div>
   </div>
 </template>
 <script>
 export default {
-    data() {
+  data() {
     return {
       comic: {},
-      imgUrl:""
+      imgUrl: "",
     };
   },
   methods: {
     async getComicById() {
-        const baseURL = "https://gateway.marvel.com:443/v1/public/";
+      const baseURL = "https://gateway.marvel.com:443/v1/public/";
       let res = await this.$http.get(
         `${baseURL}comics/${this.$route.params.comicId}?apikey=d2a508ec092852bfb6b4d607085c6e08`
       );
       this.comic = res.data.data.results[0];
       console.log("commics", this.comic);
-    }
+    },
   },
   watch: {
     comic() {
-      this.imgUrl = this.comic.thumbnail? this.comic.thumbnail.path + "." + this.comic.thumbnail.extension : undefined
+      this.imgUrl = this.comic.thumbnail
+        ? this.comic.thumbnail.path + "." + this.comic.thumbnail.extension
+        : undefined;
+    },
+  },
+  mounted() {
+    if (this.$route.params.comicId) {
+      console.log("Route params", this.$route.params);
+      this.getComicById();
     }
   },
-  mounted(){
-    if(this.$route.params.comicId) {
-      console.log("Route params", this.$route.params)
-      this.getComicById()
-    }
-  }
-}
+};
 </script>
 <style scoped>
+.header {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  
+}
 .comic-detail {
   display: flex;
   padding: 1rem 10rem;
@@ -78,15 +96,18 @@ export default {
 .comic__title {
   margin-bottom: 2rem;
 }
-.date, .text-box, .format, .description {
+.date,
+.text-box,
+.format,
+.description {
   margin-bottom: 1rem;
 }
 .text-box__heading {
   font-size: 1.5rem;
   font-weight: 8900;
-  margin-bottom: .6rem;
+  margin-bottom: 0.6rem;
 }
 .role {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 </style>
