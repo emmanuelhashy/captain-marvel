@@ -73,8 +73,8 @@ export default {
 </script>
 <style scoped>
 .detail {
-  height: 70rem;
-  max-height: 100%;
+  min-height: 60rem;
+  height: 100%;
 }
 .header {
   display: flex;
@@ -83,13 +83,12 @@ export default {
   margin-bottom: 1.5rem;
   font-weight: 900;
   font-size: 1rem;
-  padding: 2rem 14rem;
+  padding: 2rem 6rem;
 }
 .comic-detail {
   display: flex;
   padding: 0 10rem;
-  width: 100;
-  flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
 }
 .comic-detail__text {
@@ -121,5 +120,23 @@ export default {
 }
 .icon {
   margin-right: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .comic-detail {
+    padding: 0 4rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .all-comics__body {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .comic-detail__text, .comic__photo {
+  width: 100%;
+}
 }
 </style>
