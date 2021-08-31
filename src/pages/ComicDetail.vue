@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <router-link><i class="fas fa-arrow-left"></i>Back to series</router-link>
+      <router-link to="/comics"><i class="fas fa-arrow-left"></i>Back to series</router-link>
     </div>
     <div class="comic-detail">
       <img class="comic__photo" :src="imgUrl" alt="comic logo" />
@@ -75,7 +75,9 @@ export default {
   display: flex;
   justify-content: start;
   width: 100%;
-  
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  font-size: 1rem;
 }
 .comic-detail {
   display: flex;
@@ -90,8 +92,9 @@ export default {
   width: 50%;
 }
 .comic__photo {
-  width: 50%;
+  width: 40%;
   height: 45rem;
+  margin-right: 2rem;
 }
 .comic__title {
   margin-bottom: 2rem;
