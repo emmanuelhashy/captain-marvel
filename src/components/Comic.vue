@@ -56,4 +56,11 @@ export default {
 .headline:hover {
   color: red;
 }
+
+@media screen and (max-width: 768px) {
+  .comic__card {
+  width: 15rem;
+  margin-top: 2rem;
+}
+}
 </style>
