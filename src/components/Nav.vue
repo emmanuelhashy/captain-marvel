@@ -2,9 +2,11 @@
   <header>
     <nav class="first-nav">
       <div class="signin">
-        <div style="width: 20px; height: 20px; margin-right: 5px;">
-          <span
-            aria-hidden="true"
+        <div
+          class="icon-sm"
+          style="width: 20px; height: 20px; margin-right: 5px;"
+        >
+          <span aria-hidden="true"
             ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.6 66.7">
               <path
                 fill="#fff"
@@ -14,6 +16,11 @@
         </div>
         <p class="sign">sign in</p>
         <p class="join">join</p>
+        <font-awesome-icon
+          icon="bars"
+          class="icon bars"
+          @click="toggleNav(true)"
+        />
       </div>
       <div class="logo">
         <span class="icon--svg icon--svg mvl-animated-logo" aria-hidden="true"
@@ -80,12 +87,27 @@ export default {
       showNav: false,
     };
   },
-  methods: {},
+  methods: {
+    toggleNav(state) {
+      this.showNav = state;
+      const bars = document.querySelector('.bars');
+      const secondNav = document.querySelector('.second-nav');
+      const navLinks = document.querySelectorAll('.second-nav a');
+
+      bars.addEventListener('click', () => {
+        secondNav.classList.toggle("nav-active")
+        navLinks.forEach((link, index) => {
+          link.style.animmation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`
+        })
+      })
+
+    },
+  },
   mounted() {},
 };
 </script>
 
-<style scoped>
+<style>
 .first-nav {
   padding: 0 10rem;
   height: 3.4rem;
@@ -98,6 +120,9 @@ export default {
   border-bottom: 0.5px solid #393939;
   font-size: 13px;
   font-weight: 700;
+}
+.bars {
+  display: none;
 }
 .signin {
   display: flex;
@@ -174,5 +199,62 @@ export default {
 }
 .banner .banner__logo {
   height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .first-nav {
+    padding: 0 4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .first-nav {
+    padding: 0 4rem;
+  }
+  .bars {
+    display: block;
+  }
+  /* .second-nav {
+    display: none;
+  } */
+  .sign,
+  .join,
+  .nav-right .shield-container,
+  .icon-sm {
+    display: none;
+  }
+  .second-nav {
+    position: absolute;
+    left: 0;
+    height: 92vh;
+    top: 8.5vh;
+    z-index: 3000;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 50%;
+    transform: translate(-100%);
+    transition: transform .5s ease-in;
+    padding-top: 3rem;
+  }
+  .second-nav .nav-link  {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .body {
+    overflow: hidden;
+  }
+  .nav-active {
+    transform: translate(0%);
+  }
+
+  @keyframes navLinkFade {
+    from{
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  }
 }
 </style>

@@ -124,6 +124,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 2rem;
+  flex-wrap: wrap;
 }
 .footer__link {
   font-size: 13px;
@@ -181,5 +182,16 @@ svg {
     width: 4rem;
     margin-right: 1rem;
     object-fit: contain;
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 2rem;
+  }
 }
 </style>

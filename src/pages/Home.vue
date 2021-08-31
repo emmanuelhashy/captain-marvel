@@ -2,7 +2,7 @@
   <div>
     <Hero/>
     <News/>
-    <RecentComics/>
+    <!-- <RecentComics/> -->
     <featured/>
     <div class="bottom">
       <Gaming/>
@@ -15,7 +15,7 @@ import Hero from '../components/Hero.vue'
 import Featured from '../components/Featured.vue'
 import News from '../components/News.vue'
 import Gaming from '../components/Gaming.vue'
-import RecentComics from '../components/RecentComics.vue'
+// import RecentComics from '../components/RecentComics.vue'
 
 export default {
   name: 'App',
@@ -24,7 +24,7 @@ export default {
     Featured,
     News,
     Gaming,
-    RecentComics,
+    // RecentComics,
   },
   data() {
     return {

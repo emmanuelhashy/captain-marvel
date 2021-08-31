@@ -3,11 +3,7 @@
     <h4 class="news__header">latest news</h4>
     <div class="news__container">
       <div class="news__card">
-        <img
-          class="news__photo"
-          src="../assets/hero.jpg"
-          alt="news 1 logo"
-        />
+        <img class="news__photo" src="../assets/hero.jpg" alt="news 1 logo" />
         <p class="news__genre">Movies</p>
         <p class="headline">
           ‘The Marvels’ Arrives in Theaters November 11, 2022
@@ -25,11 +21,7 @@
         </p>
       </div>
       <div class="news__card">
-        <img
-          class="news__photo"
-          src="../assets/images.jpg"
-          alt="news 1 logo"
-        />
+        <img class="news__photo" src="../assets/images.jpg" alt="news 1 logo" />
         <p class="news__genre">CULTURE & LIFESTYLE</p>
         <p class="headline">
           Marvel’s Voices: Victoria Alonso on Marvel Studios’ Approach to
@@ -86,7 +78,7 @@
 .news__genre {
   color: #999;
   text-transform: uppercase;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin-top: 5px;
 }
@@ -100,5 +92,26 @@
 }
 .headline:hover {
   color: red;
+}
+
+@media screen and (max-width: 1024px) {
+  .news {
+    padding: 0 4rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news__container {
+    flex-wrap: wrap;
+  }
+  .news__card {
+  width: 15rem;
+  margin-top: 2rem;
+}
+.news__header {
+  text-align: center;
+}
 }
 </style>

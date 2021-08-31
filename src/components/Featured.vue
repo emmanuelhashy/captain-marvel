@@ -130,7 +130,7 @@ iframe {
 }
 
 .featured-text {
-  width: 55rem;
+  max-width: 55rem;
 }
 .sub-text {
   color: #999;
@@ -160,6 +160,25 @@ iframe {
   font: 400 16px/1.3 Roboto, Trebuchet MS, Helvetica, Arial, sans-serif;
   letter-spacing: 0.5px;
   margin-bottom: 3.2rem;
-  width: 40rem;
+  max-width: 40rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .featured {
+    padding: 0 4rem;
+  }
+  /* .video-description {
+  width: 20rem;
+} */
+}
+
+@media screen and (max-width: 768px) {
+  .video-collection {
+  display: none;
+}
+.video-2 {
+  width: 100%;
+  height: 70vh;
+}
 }
 </style>

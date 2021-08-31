@@ -120,4 +120,16 @@ background-image: url("~@/assets/008cmv_ons_mas_dsk_02.jpg"), -webkit-gradient(l
 iframe {
   border: none;
 }
+
+@media screen and (max-width: 1024px) {
+  .hero-container {
+    padding: 4rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .tabs {
+    display: none;
+  }
+}
 </style>

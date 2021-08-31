@@ -10,7 +10,9 @@
     <div class="gaming__right">
       <div class="gaming__text">
         <h4 class="gaming__header-1">marvel hq</h4>
-        <p class="gaming__header-2">Play games and read comics on marvelHQ.com</p>
+        <p class="gaming__header-2">
+          Play games and read comics on marvelHQ.com
+        </p>
         <a
           target="_self"
           style="margin: 1rem; text-transform: uppercase;"
@@ -24,9 +26,9 @@
 </template>
 <style scoped>
 .gaming {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
   padding: 0 10rem;
   background-color: #000;
 }
@@ -42,8 +44,8 @@
   text-align: center;
 }
 .gaming__text {
-    width: 100%;
-    padding: 0 7rem;
+  width: 100%;
+  padding: 0 4rem;
 }
 .gaming__header-1 {
   margin: 20px 0;
@@ -56,5 +58,42 @@
   margin: 0 0 10px;
   font: 900 26px/1.2 Roboto Bold, Trebuchet MS, Helvetica, Arial, sans-serif;
   color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+  .gaming {
+    padding: 0rem 4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .gaming__text {
+    padding: 0 2rem;
+  }
+  .gaming__header-2 {
+    font: 700 23px/1.2 Roboto Bold, Trebuchet MS;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .gaming {
+    padding-top: 2rem;
+    flex-direction: column;
+  }
+  .gaming__left,
+  .gaming__right {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .gaming {
+    padding: 0rem 1.5rem;
+  }
+  .gaming__text {
+    padding: 0;
+  }
+  .gaming__header-2 {
+    font: 500 18px/1.2 Roboto Bold, Trebuchet MS;
+  }
 }
 </style>
