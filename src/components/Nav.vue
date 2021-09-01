@@ -240,7 +240,7 @@ export default {
     position: absolute;
     left: 0;
     height: 92vh;
-    top: 8.5vh;
+    top: 7.65vh;
     z-index: 3000;
     background-color: #202020;
     display: flex;
